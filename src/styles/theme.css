@@ -1,0 +1,346 @@
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+  --background: #ffffff;
+  --foreground: oklch(0.145 0 0);
+  --card: #ffffff;
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: #030213;
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.95 0.0058 264.53);
+  --secondary-foreground: #030213;
+  --muted: #ececf0;
+  --muted-foreground: #717182;
+  --accent: #e9ebef;
+  --accent-foreground: #030213;
+  --destructive: #d4183d;
+  --destructive-foreground: #ffffff;
+  --border: rgba(0, 0, 0, 0.1);
+  --input: transparent;
+  --input-background: #f3f3f5;
+  --switch-background: #cbced4;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --border-subtle: rgba(0, 0, 0, 0.06);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: #030213;
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.13 0.008 260);
+  --foreground: oklch(0.92 0.004 260);
+  --card: oklch(0.165 0.01 260);
+  --card-foreground: oklch(0.92 0.004 260);
+  --popover: oklch(0.165 0.01 260);
+  --popover-foreground: oklch(0.92 0.004 260);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.24 0.012 260);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.215 0.012 260);
+  --muted-foreground: oklch(0.62 0.015 260);
+  --accent: oklch(0.24 0.015 260);
+  --accent-foreground: oklch(0.95 0.005 260);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.255 0.012 260);
+  --border-subtle: oklch(0.22 0.008 260);
+  --input: oklch(0.22 0.012 260);
+  --input-background: oklch(0.15 0.01 260);
+  --switch-background: oklch(0.35 0.015 260);
+  --ring: oklch(0.45 0.02 260);
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --chart-1: oklch(0.68 0.22 265);
+  --chart-2: oklch(0.75 0.18 165);
+  --chart-3: oklch(0.78 0.18 75);
+  --chart-4: oklch(0.7 0.24 310);
+  --chart-5: oklch(0.7 0.22 20);
+  --sidebar: oklch(0.145 0.008 260);
+  --sidebar-foreground: oklch(0.9 0.005 260);
+  --sidebar-primary: oklch(0.58 0.22 265);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.215 0.012 260);
+  --sidebar-accent-foreground: oklch(0.92 0.005 260);
+  --sidebar-border: oklch(0.22 0.008 260);
+  --sidebar-ring: oklch(0.45 0.02 260);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* ============================================
+   Smooth scrolling for all scrollable containers
+   ============================================ */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .overflow-y-auto,
+  .overflow-y-scroll,
+  .overflow-auto,
+  .overflow-scroll {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Smooth transition for theme switching */
+html,
+html *,
+html *::before,
+html *::after {
+  transition: background-color 0.3s ease, border-color 0.25s ease, box-shadow 0.25s ease, color 0.2s ease;
+}
+
+/* Disable transitions on page load to prevent flash */
+html.theme-transitioning * {
+  transition: none !important;
+}
+
+/* ============================================
+   Custom scrollbar — unified for light & dark
+   ============================================ */
+
+/* Global scrollbar (pages, panels) */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+/* Modal scrollbar — slightly wider for touch area */
+.max-h-\[90vh\]::-webkit-scrollbar,
+.max-h-\[95vh\]::-webkit-scrollbar,
+.flex-1.overflow-y-auto::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* DataTable / table horizontal scrollbar */
+[data-slot="table-container"]::-webkit-scrollbar,
+[data-slot="table-container"]::-webkit-scrollbar:horizontal,
+.overflow-x-auto::-webkit-scrollbar:horizontal {
+  height: 5px;
+}
+
+[data-slot="table-container"]::-webkit-scrollbar-thumb:horizontal,
+.overflow-x-auto::-webkit-scrollbar-thumb:horizontal {
+  background: var(--border);
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background-clip: content-box;
+  min-width: 40px;
+}
+
+[data-slot="table-container"]::-webkit-scrollbar-thumb:horizontal:hover,
+.overflow-x-auto::-webkit-scrollbar-thumb:horizontal:hover {
+  background: var(--muted-foreground);
+  border: 1px solid transparent;
+  background-clip: content-box;
+}
+
+[data-slot="table-container"]::-webkit-scrollbar-track:horizontal,
+.overflow-x-auto::-webkit-scrollbar-track:horizontal {
+  background: transparent;
+}
+
+/* Table containers Firefox */
+[data-slot="table-container"],
+.overflow-x-auto {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+/* Radix Select dropdown scrollbar */
+[data-slot="select-content"]::-webkit-scrollbar {
+  width: 5px;
+}
+
+[data-slot="select-content"]::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background-clip: content-box;
+}
+
+[data-slot="select-content"]::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
+  border: 1px solid transparent;
+  background-clip: content-box;
+}
+
+[data-slot="select-content"]::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Radix Select dropdown Firefox */
+[data-slot="select-content"] {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
+  border: 1px solid transparent;
+  background-clip: content-box;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+/* Selection color for dark mode */
+.dark ::selection {
+  background: oklch(0.35 0.12 280 / 0.4);
+  color: oklch(0.95 0.005 260);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /**
+  * Default typography styles for HTML elements (h1-h4, p, label, button, input).
+  * These are in @layer base, so Tailwind utility classes (like text-sm, text-lg) automatically override them.
+  */
+
+  html {
+    font-size: var(--font-size);
+  }
+
+  h1 {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h2 {
+    font-size: var(--text-xl);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h3 {
+    font-size: var(--text-lg);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h4 {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  label {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  button {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  input {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-normal);
+    line-height: 1.5;
+  }
+
+  select {
+    background-color: var(--card);
+    color: var(--card-foreground);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.5rem 0.75rem;
+    font-size: var(--text-sm);
+    line-height: 1.5;
+  }
+
+  select option {
+    background-color: var(--card);
+    color: var(--card-foreground);
+  }
+
+  input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([data-slot="input"]),
+  textarea:not([data-slot="input"]) {
+    background-color: var(--input-background);
+    color: var(--foreground);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+}
