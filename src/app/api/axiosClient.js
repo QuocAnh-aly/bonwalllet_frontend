@@ -8,8 +8,8 @@ import {
 } from "./tokenStore";
 
 const axiosClient = axios.create({
-  //baseURL: "http://localhost:5229", // APIGateway URL
-  baseURL: "",
+  baseURL: "http://localhost:8081", // APIGateway URL
+
   // Gửi kèm cookie HttpOnly (refresh token) trong các request tới /api/auth/*.
   withCredentials: true,
   headers: {
