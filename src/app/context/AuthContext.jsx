@@ -1,8 +1,20 @@
-import { createContext, useContext, useState, useEffect, useCallback } from 'react';
-import { authApi } from '../api/authApi';
-import { setAccessToken, clearAccessToken, markSession, clearSession, hasSession } from '../api/tokenStore';
-import { clearOfflineCache } from '../offline/offlineCache';
-import { resetOfflineKey } from '../security/keyHolder';
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+} from "react";
+import { authApi } from "../api/authApi";
+import {
+  setAccessToken,
+  clearAccessToken,
+  markSession,
+  clearSession,
+  hasSession,
+} from "../api/tokenStore";
+import { clearOfflineCache } from "../offline/offlineCache";
+import { resetOfflineKey } from "../security/keyHolder";
 
 const AuthContext = createContext(null);
 
@@ -12,7 +24,8 @@ const AuthContext = createContext(null);
 const persistAuth = (data) => {
   setAccessToken(data.access_token);
   markSession();
-  if (data.user_id != null) localStorage.setItem('user_id', String(data.user_id));
+  if (data.user_id != null)
+    localStorage.setItem("user_id", String(data.user_id));
 };
 
 export function AuthProvider({ children }) {
@@ -24,11 +37,11 @@ export function AuthProvider({ children }) {
     authApi.logout().catch(() => {});
     clearAccessToken();
     clearSession();
-    localStorage.removeItem('user_id');
-    localStorage.removeItem('expense_categories');
-    localStorage.removeItem('income_sources');
-    localStorage.removeItem('app_tags');
-    localStorage.removeItem('app_object_groups');
+    localStorage.removeItem("user_id");
+    localStorage.removeItem("expense_categories");
+    localStorage.removeItem("income_sources");
+    localStorage.removeItem("app_tags");
+    localStorage.removeItem("app_object_groups");
     // Dọn dữ liệu offline + khóa giải mã để tài khoản sau không đọc được.
     clearOfflineCache();
     resetOfflineKey();
@@ -43,8 +56,8 @@ export function AuthProvider({ children }) {
       clearSession();
       setUser(null);
     };
-    window.addEventListener('auth:logout', handleForceLogout);
-    return () => window.removeEventListener('auth:logout', handleForceLogout);
+    window.addEventListener("auth:logout", handleForceLogout);
+    return () => window.removeEventListener("auth:logout", handleForceLogout);
   }, []);
 
   const restoreSession = useCallback(async () => {
@@ -74,7 +87,8 @@ export function AuthProvider({ children }) {
 
   const login = async (credentials) => {
     const data = await authApi.login(credentials);
-    if (!data?.access_token) throw new Error('Phản hồi đăng nhập không hợp lệ.');
+    if (!data?.access_token)
+      throw new Error("Phản hồi đăng nhập không hợp lệ.");
     persistAuth(data);
     const profile = await authApi.getProfile();
     setUser(profile);
@@ -92,7 +106,7 @@ export function AuthProvider({ children }) {
 
   const register = async (userData) => {
     const data = await authApi.register(userData);
-    if (!data?.access_token) throw new Error('Phản hồi đăng ký không hợp lệ.');
+    if (!data?.access_token) throw new Error("Phản hồi đăng ký không hợp lệ.");
     persistAuth(data);
     const profile = await authApi.getProfile();
     setUser(profile);
@@ -100,7 +114,9 @@ export function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, register, logout, refreshUser }}>
+    <AuthContext.Provider
+      value={{ user, loading, login, register, logout, refreshUser }}
+    >
       {children}
     </AuthContext.Provider>
   );
@@ -108,6 +124,6 @@ export function AuthProvider({ children }) {
 
 export const useAuth = () => {
   const ctx = useContext(AuthContext);
-  if (!ctx) throw new Error('useAuth must be used within AuthProvider');
+  if (!ctx) throw new Error("useAuth must be used within AuthProvider");
   return ctx;
 };
