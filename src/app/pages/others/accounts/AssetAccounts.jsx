@@ -180,7 +180,7 @@ export function AssetAccounts() {
   const [txWalletFilter, setTxWalletFilter] = useState("all");
   const [selectedAccountName, setSelectedAccountName] = useState(null);
   const [accountPage, setAccountPage] = useState(1);
-  const [accountPageSize, setAccountPageSize] = useState(10);
+  const [accountPageSize, setAccountPageSize] = useState(4);
   const [displayAccounts, setDisplayAccounts] = useState([]);
   const [accountTotalCount, setAccountTotalCount] = useState(0);
   const [accountTotalPages, setAccountTotalPages] = useState(1);
@@ -879,95 +879,6 @@ export function AssetAccounts() {
             </div>
           )}
         </>
-      )}
-
-      {/* ════════════════════ ACCOUNT DETAILS TABLE ════════════════════ */}
-      {accounts.length > 0 && (
-        <div className="bg-card rounded-2xl border border-border shadow-sm overflow-hidden mb-8">
-          <div className="px-6 py-4 border-b border-border bg-muted/50 flex items-center gap-2">
-            <Eye size={16} className="text-purple-500" />
-            <h2 className="text-sm font-bold text-card-foreground">Chi tiết tài khoản</h2>
-          </div>
-          <div className="overflow-x-auto">
-            <table className="w-full text-left">
-              <thead>
-                <tr className="text-xs uppercase tracking-wider text-muted-foreground border-b border-border bg-muted">
-                  <th className="px-4 sm:px-6 py-3.5 font-semibold whitespace-nowrap">Tên tài khoản</th>
-                  <th className="px-4 sm:px-6 py-3.5 font-semibold whitespace-nowrap">Loại</th>
-                  <th className="px-4 sm:px-6 py-3.5 font-semibold text-center whitespace-nowrap">Tiền tệ</th>
-                  <th className="px-4 sm:px-6 py-3.5 font-semibold text-right whitespace-nowrap">Số dư ban đầu</th>
-                  <th className="px-4 sm:px-6 py-3.5 font-semibold text-right whitespace-nowrap">Số dư hiện tại</th>
-                  <th className="px-4 sm:px-6 py-3.5 font-semibold text-right whitespace-nowrap">Thay đổi</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border">
-                {accounts.map((acc) => {
-                  const diff = acc.balance - acc.initialBalance;
-                  const diffPct = acc.initialBalance !== 0 ? ((diff / acc.initialBalance) * 100).toFixed(1) : null;
-                  return (
-                    <tr key={acc.id} className="hover:bg-muted/50 transition-colors group">
-                      <td className="px-4 sm:px-6 py-4 whitespace-nowrap">
-                        <div className="flex items-center gap-3">
-                          <div
-                            className="w-9 h-9 rounded-xl flex items-center justify-center text-white text-xs shrink-0 shadow-sm"
-                            style={{ background: `linear-gradient(135deg, ${acc.gradientFrom}, ${acc.gradientTo})` }}
-                          >
-                            <acc.icon size={16} />
-                          </div>
-                          <span className="font-semibold text-card-foreground">{acc.name}</span>
-                        </div>
-                      </td>
-                      <td className="px-4 sm:px-6 py-4 whitespace-nowrap">
-                        <span className="px-2.5 py-1 bg-muted text-muted-foreground rounded-full text-xs font-medium">{acc.type}</span>
-                      </td>
-                      <td className="px-4 sm:px-6 py-4 text-center whitespace-nowrap">
-                        <span className="px-2.5 py-1 bg-purple-500/10 text-purple-600 rounded-full text-xs font-semibold">{acc.currencyCode}</span>
-                      </td>
-                      <td className="px-4 sm:px-6 py-4 text-right text-muted-foreground font-medium whitespace-nowrap">{fmt(acc.initialBalance)}</td>
-                      <td className="px-4 sm:px-6 py-4 text-right font-bold text-card-foreground whitespace-nowrap">{fmt(acc.balance)}</td>
-                      <td className="px-4 sm:px-6 py-4 text-right whitespace-nowrap">
-                        <div className="flex items-center justify-end gap-2">
-                          <span className={`font-semibold text-sm ${diff >= 0 ? "text-green-600" : "text-red-500"}`}>
-                            {diff >= 0 ? "+" : "-"}{fmt(Math.abs(diff))}
-                            {diffPct !== null && (
-                              <span className="text-xs font-normal ml-1 opacity-60">({diffPct}%)</span>
-                            )}
-                          </span>
-                          {acc.isSavingsWallet ? (
-                            <button
-                              onClick={() => navigate("/piggy-banks")}
-                              className="flex items-center gap-1 px-2 py-1 rounded-lg text-purple-600 hover:bg-purple-50 text-xs font-semibold transition-colors opacity-0 group-hover:opacity-100"
-                              title="Quản lý ở trang Lợn tiết kiệm"
-                            >
-                              <PiggyBank size={13} /> Lợn tiết kiệm
-                            </button>
-                          ) : (
-                            <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                              <button
-                                onClick={() => setEditingAccount(acc)}
-                                className="p-1.5 rounded-lg hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"
-                                title="Sửa"
-                              >
-                                <Pencil size={13} />
-                              </button>
-                              <button
-                                onClick={() => handleDeleteAsset(acc)}
-                                className="p-1.5 rounded-lg hover:bg-red-50 text-muted-foreground hover:text-red-500 transition-colors"
-                                title="Xóa"
-                              >
-                                <Trash2 size={13} />
-                              </button>
-                            </div>
-                          )}
-                        </div>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-        </div>
       )}
 
       {/* ════════════════════ RECENT TRANSACTIONS ════════════════════ */}
